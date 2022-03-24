@@ -93,15 +93,9 @@ function renderlist(cssSelector, list) {
 
 
 
-${
-    myobject_serailized = JSON.stringify(id)
-
-}
-
-
 <!---TODO this detailed page should take you a  specific movie detail, needs fixing --->
 <!--TODO add movie synopsis field to the database ------>
-<a href="http://localhost:3501/api/movies/${id}">detailed page </a>
+<!---<a href="http://localhost:3501/api/movies/${id}">detailed page </a> --->
 
 
 

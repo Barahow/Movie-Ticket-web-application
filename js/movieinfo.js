@@ -1,5 +1,4 @@
 
-
 async function getData(restRoute) {
   // get the response/data from a rest route
   let rawData = await fetch(restRoute);
@@ -14,15 +13,13 @@ async function getData(restRoute) {
 
 }
 
-var play = "#play";
-var video = "#video";
 
-
-var embed = function (url) {
-  var id = url.split("?v=")[1]; //sGbxmsDFVnE
-  var embedlink = "https://www.youtube.com/embed/" + id; //https://www.youtube.com/embed/sGbxmsDFVnE
-  document.getElementById("myIframe").src = embedlink;
+Storage.prototype.getObject = function getobject(key) {
+  var value = this.getItem(key);
+  return value && JSON.parse(value);
 }
+
+
 
 
 
@@ -30,7 +27,8 @@ var embed = function (url) {
 
 function renderlist(cssSelector, list) {
 
-  let html = ""
+  var html = "";
+
 
   // turn the list array into json object
   let item = 0
@@ -40,9 +38,27 @@ function renderlist(cssSelector, list) {
   // turn this json string to json object
   var mymovieData = JSON.parse(myJsonString)
 
+
+// using local storage could be an alternative than using rest routes
+  let myobject_deseralize = localStorage.getItem("moviedata");
+  console.log("id " + myobject_deseralize)
+
+
+
+  // should get the id of the one fetched and so it can be compared to this pages object id. 
+  console.log("id " + myobject_deseralize)
+
+
+
+  
+
+
+
   for (item = 0; item < mymovieData.length; item++) {
 
     var items = mymovieData[item];
+
+    var id = items.id;
 
     var title = items.title;
     var genre = items.genre;
@@ -50,37 +66,23 @@ function renderlist(cssSelector, list) {
     var poster = items.posters;
     var trailer = items.trailers
     var releaseDate = items.releasedate;
-    var id = items.id;
-
 
     
-    let myobject_serailized;
+    var int = Number(myobject_deseralize);
+    console.log('integer' + int)
+
     
+      
     
 
+      html +=
 
-
-
-
-
-
-   
- 
-
-    html +=
-
-      `
+        `
     <div href= "#"  class=" movies-container">
  <!--the first movie-->
 <div class="box">
-<div   class="box-img"  >
-
-
-
-
-
-<img  src="/image/${poster}" alt="" >
-
+<div id="${items.id}"   class="box-img"  >
+<img onclick="myFunction()" src="/image/${poster}" alt="" >
 
 </div>
 <div class="content ">
@@ -89,24 +91,6 @@ function renderlist(cssSelector, list) {
 
 
 </div>
-
-
-
-
-${
-    myobject_serailized = JSON.stringify(id)
-
-}
-
-
-<!---TODO this detailed page should take you a  specific movie detail, needs fixing --->
-<!--TODO add movie synopsis field to the database ------>
-<a href="http://localhost:3501/api/movies/${id}">detailed page </a>
-
-
-
-
-
 
 <h3> ${title} </h3>
 <span> ${length} min | ${genre}</span>
@@ -117,7 +101,7 @@ ${
 
 
 
-<a href="https://www.youtube.com/${trailer}"  target="_blank" class="bi-youtube"> play trailer </a>
+<a href="https://www.youtube.com/${trailer}" class="bi-youtube"> play trailer </a>
 
 
        
@@ -129,49 +113,31 @@ ${
 
 
 
-
     `
-
-  
    
 
-   
   }
-
-
-
+  document.querySelector(cssSelector).innerHTML = html
   // use the ccselector to grab an element
   // and replace its inner html with mmy table
 
 
-  document.querySelector(cssSelector).innerHTML = html
+
 
 }
 
 
 
 
-function myFunction() {
-  console.log('hello')
-
-  location.href = "movieinfo.html";
- 
-  if (items.id === 1) {
 
 
-    localStorage.setItem("moviedata", myobject_serailized);
-  }
 
- 
-}
 
 async function start() {
 
   let tablesAndViews = await getData('/api/tablesAndViews');
 
   renderlist('.movies', await getData('/api/movies'));
-
-  console.log(await getData('/api/movies'))
 
   //renderRegistrationForm(await getData('/api/movies'))
 }

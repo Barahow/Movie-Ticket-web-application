@@ -21,19 +21,17 @@ const app = express();
 app.use(express.static('frontend'));
 
 
-
-//telling the express  module that the public dir has all of our site assets 
-
-app.use(express.static(__dirname + '/public'));
-
-app.use(express.static(__dirname + '/js'));
-
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname + '/frontend/index.html'))
+// Answer with the 404 partial if the frontend looks for a non-existant partial
+app.all('/partials/*', (req, res) => {
+  res.set('Content-Type', 'text/html');
+  res.sendFile(path.join(__dirname, 'frontend', 'partials', '404.html'));
 });
 
 
-
+app.all('/', (req, res) => {
+  res.set('Content-Type', 'text/html');
+  res.sendFile(path.join(__dirname, 'frontend', 'index.html'));
+});
 
 
 

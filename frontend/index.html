@@ -1,57 +1,68 @@
+<!-- Doctype: This is HTML version 5 -->
 <!DOCTYPE html>
-
-
+<!-- Here the html starts-->
 <html lang="en">
 
+<!-- Head: Meta information, not displayed on the page-->
+
 <head>
+  <!-- Tell the web browser which character encoding we are using-->
   <meta charset="UTF-8">
+  <!-- Interpret this page according to modern web standards in IE -->
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!--Don't scale things down on devices like smartphones and tablets-->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- The title is displayed in the tab in the web browser -->
+  <title>My Site: Cinema</title>
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="http://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
   <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-
-  <title>Cinema</title>
 </head>
+
+
+
+
+
 
 <body>
 
   <!--- adding a navbar here --->
 
+
   <header>
 
     <a href="#" class="logo">
-      <i class='bx bxs-camera-movie'></i>Movies </a>
+      <i class='bx bxs-camera-movie'></i>Movies    </a>
 
 
     <!---Adding the menu here-->
-    <nav id="main-menu">
-      <ul>
-        <l1><a href="index.html"> Movies</a> </l1>
-        <l1><a href="rRated.html"> R rated movies</a></l1>
-        <l1><a href="pg13.html">PG13 Movies</a> </l1>
-        <l1><a href="pg.html">PG Movies</a> </l1>
-      </ul>
-    </nav>
+  <nav id="main-menu">
+    <ul>
+      <l1><a class="active" href="/"> Movies</a> </l1>
+      <l1><a href="/rRated"> R rated movies</a></l1>
+      <l1><a href="/pg13">PG13 Movies</a> </l1>
+      <l1><a href="/pg">PG Movies</a> </l1>
+    </ul>
+  </nav>
 
 
-    <input type="checkbox" id="menu-input" class="menu-shower" />
-    <label id="menu-menu" for="menu-input">
-      <nav id="sidebar-menu">
-        <h3>Menu</h3>
-        <ul>
-          <l1><a href="index.html"> Movies</a> </l1>
-          <br>
-          <l1><a href="rRated.html"> R rated movies</a></l1>
-          <br>
-          <l1><a href="pg13.html">PG13 Movies</a> </l1>
-          <br>
-          <l1><a href="pg.html">PG Movies</a> </l1>
-        </ul>
-      </nav>
-    </label>
+  <input type="checkbox" id="menu-input" class="menu-shower" />
+<label id="menu-menu" for="menu-input">
+  <nav id="sidebar-menu">
+    <h3>Menu</h3>
+  <ul>
+    <l1><a class="active" href="/"> Movies</a> </l1>
+    <br>
+    <l1><a href="/rRated"> R rated movies</a></l1>
+    <br>
+    <l1><a href="/pg13">PG13 Movies</a> </l1>
+    <br>
+    <l1><a href="/pg">PG Movies</a> </l1>
+  </ul>
+  </nav>
+</label>
 
-    <div class="overlay"></div>
+<div class="overlay"></div>
   </header>
 
 
@@ -62,20 +73,25 @@
 
 
   <!----R Rated -->
+
+  <main>
+  
   <section class="movies" id="movies">
-
-
-
+  
+  
+  
     <div class="movie-area"></div>
     <iframe id="myIframe" width="560" height="315" frameborder="0" allowfullscreen></iframe>
-
+  
     </div>
+
+ 
 
   </section>
 
 
 
-
+  </main>
 
 
 
@@ -126,18 +142,13 @@
 
 
 
-  <script src="/registration.js"></script>
-  <script src="/login.js"></script>
 
-
-  <script src="/pg13.js"></script>
-  <script src="/pg.js"></script>
-  <script src="/rRated.js"></script>
-  <script src="/movieinfo.js">  </script>
-  <script src="/main.js">  </script>
+  <script src="/js/loadMovie.js" ></script>
+  <script src="/js/main.js">  </script>
 
 
 
 </body>
+
 
 </html>

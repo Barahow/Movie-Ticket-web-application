@@ -70,7 +70,7 @@ async function router() {
     await loadJsonAndDisplayPg13Movies();
 
   } else if (route === '/partials/pg.html') {
-   await loadJsonAndDisplayPgMovies();
+   await loadJsonAndDisplayPgMovies()
     
   }
   window.addEventListener('popstate', router);

@@ -2,7 +2,8 @@
 const PORT = 3501;
 
 const express = require('express');
-const { path } = require('express/lib/application');
+const path = require('path');
+
 
 
 const bettersqlite3 = require('better-sqlite3')
@@ -21,18 +22,27 @@ const app = express();
 app.use(express.static('frontend'));
 
 
-// Answer with the 404 partial if the frontend looks for a non-existant partial
-app.all('/partials/*', (req, res) => {
-  res.set('Content-Type', 'text/html');
-  res.sendFile(path.join(__dirname, 'frontend', 'partials', '404.html'));
-});
-
-
-app.all('/', (req, res) => {
+// manually hadd the paths to the index.html to handle hard reloads 
+app.all("/rRated", (req, res) => {
   res.set('Content-Type', 'text/html');
   res.sendFile(path.join(__dirname, 'frontend', 'index.html'));
 });
 
+
+app.all("/pg13", (req, res) => {
+  res.set('Content-Type', 'text/html');
+  res.sendFile(path.join(__dirname, 'frontend', 'index.html'));
+});
+
+
+
+app.all("/pg", (req, res) => {
+  res.set('Content-Type', 'text/html');
+  res.sendFile(path.join(__dirname, 'frontend', 'index.html'));
+});
+
+
+//telling the ex
 
 
 

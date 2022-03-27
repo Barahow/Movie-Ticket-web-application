@@ -60,7 +60,7 @@ for (item = 0; item < mymovieData.length; item++) {
         </div>
 
 
-    }
+    
 
 
 
@@ -297,8 +297,6 @@ async function loadJsonAndDisplayPg13Movies() {
   // and replace its contents with our newly created html
   document.querySelector('.movies').innerHTML = html;
 }
-
-
 async function loadJsonAndDisplayPgMovies() {
 
   let rawData = await fetch('/api/rateG');
@@ -360,13 +358,6 @@ async function loadJsonAndDisplayPgMovies() {
 
 
 
-      }
-             <!--- TODO fix detailed page based on the id u press--->
-       <!----  <a href="http://localhost:3500/api/movies/${id}">detailed page </a> ---- >
-
-
-
-
 
 
         <h3> ${title} </h3>
@@ -402,11 +393,3 @@ async function loadJsonAndDisplayPgMovies() {
   // and replace its contents with our newly created html
   document.querySelector('.movies').innerHTML = html;
 }
-
-
-
-
-
-
-
-
